@@ -27,23 +27,16 @@ section{padding:64px 0} .section-kicker{color:var(--pink);font-size:.75rem;lette
 <section id="memories"><div class="wrap">
   <div class="section-kicker">Chapter one · little moments</div><h2>Memories of my<br>favorite person</h2>
   <p class="intro">Every picture holds a little feeling. Add the photos you want her to see; captions can be changed to your own memories.</p>
-  <div class="panel">
-    <div class="memory-grid" id="gallery">
-      <div class="memory">
-    </div>class="placeholder">♡<small>A favorite smile</small></div></div>
-      <div class="memory"><div class="placeholder">✦<small>A moment to remember</small></div></div>
-      <div class="memory"><div class="placeholder">♡<small>Just being you</small></div></div>
-      <div class="memory"><div class="placeholder">✧<small>A little happiness</small></div></div>
-      <div class="memory"><div class="placeholder">♡<small>One for the scrapbook</small></div></div>
-      <div class="memory"><div class="placeholder">✦<small>More memories to come</small></div></div>
-    <div class="uploadrow">
-      <label class="filelabel">＋ Add her photos <input id="photoInput" type="file" accept="image/*" multiple></label>
-      <button class="btn secondary" id="clearPhotos">Clear preview photos</button>
-    </div>
-    <p class="tiny">Photo picker is local to this browser preview. To include photos in the published site, see README and add image files to the website folder.</p>
-  </div>
-</div></section>
-<section><div class="wrap">
+<div class="memory-grid" id="photoGallery">
+  <div class="memory"><img src="images/photo1.jpg" alt="Memory 1"></div>
+  <div class="memory"><img src="images/photo2.jpg" alt="Memory 2"></div>
+  <div class="memory"><img src="images/photo3.jpg" alt="Memory 3"></div>
+  <div class="memory"><img src="images/photo4.jpg" alt="Memory 4"></div>
+  <div class="memory"><img src="images/photo5.jpg" alt="Memory 5"></div>
+  <div class="memory"><img src="images/photo6.jpg" alt="Memory 6"></div>
+  <div class="memory"><img src="images/photo7.jpg" alt="Memory 7"></div>
+  <div class="memory"><img src="images/photo8.jpg" alt="Memory 8"></div>
+</div>
   <div class="section-kicker">Chapter two · from my heart</div><h2>A letter for Jannu</h2>
   <div class="panel letter">Happy Birthday, <strong>Pranty — my Jannu</strong> ♡
 
@@ -90,26 +83,6 @@ function tick(){
  countdown.innerHTML=`<div class="timebox"><b>${days}</b><span>Days</span></div><div class="timebox"><b>${hours}</b><span>Hours</span></div><div class="timebox"><b>${mins}</b><span>Minutes</span></div>`;
 }
 tick();setInterval(tick,60000);
-const gallery=document.getElementById('gallery'), original=gallery.innerHTML;
-document.getElementById('photoInput').addEventListener('change',e=>{
- const files=[...e.target.files].filter(f=>f.type.startsWith('image/')).slice(0,12);
- if(!files.length)return;
- // Move the first selected photo to position 8; keep all other photos in order.
- const ordered=[...files.slice(1,8),files[0],...files.slice(8)];
- gallery.innerHTML='';
- const totalSlots=Math.max(8,ordered.length);
- for(let i=0;i<totalSlots;i++){
-  const card=document.createElement('div');card.className='memory';
-  if(ordered[i]){card.classList.add('has-image');const img=document.createElement('img');img.alt='Birthday memory '+(i+1);img.src=URL.createObjectURL(ordered[i]);card.append(img)}
-  else{const placeholder=document.createElement('div');placeholder.className='placeholder';placeholder.textContent='♡';const small=document.createElement('small');small.textContent='Photo '+(i+1);placeholder.append(small);card.append(placeholder)}
-  const number=document.createElement('span');number.className='photo-number';number.textContent=String(i+1);card.append(number);gallery.append(card);
- }
-});
-document.getElementById('clearPhotos').addEventListener('click',()=>{gallery.innerHTML=original;document.getElementById('photoInput').value=''});
-document.getElementById('wishBtn').addEventListener('click',()=>{
- document.getElementById('secret').classList.add('show');
- for(let i=0;i<36;i++){const el=document.createElement('span');el.textContent=['♡','✦','✧','♥'][Math.floor(Math.random()*4)];Object.assign(el.style,{position:'fixed',left:Math.random()*100+'vw',top:'-30px',zIndex:9999,pointerEvents:'none',fontSize:(14+Math.random()*22)+'px',color:['#ff8db5','#fff0f5','#d85a8a'][i%3],transition:'transform 3s linear,opacity 3s linear'});document.body.append(el);requestAnimationFrame(()=>{el.style.transform=`translateY(${innerHeight+80}px) rotate(${Math.random()*360}deg)`;el.style.opacity='0'});setTimeout(()=>el.remove(),3200)}
-});
 // Original City Vibes instrumental theme, generated in the browser.
 const themeBtn=document.getElementById('themeToggle');
 let themeContext=null,themeTimer=null,themeStep=0;
