@@ -1,5 +1,5 @@
-<!doctype html>
-<html lang="en">
+!doctype html>
+<html lang="en"
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -26,16 +26,16 @@ section{padding:64px 0} .section-kicker{color:var(--pink);font-size:.75rem;lette
 <main>
 <section id="memories"><div class="wrap">
   <div class="section-kicker">Chapter one · little moments</div><h2>Memories of my<br>favorite person</h2>
-  <p class="intro">Every picture holds a little feeling. Add the photos you want her to see; captions can be changed to your own memories.</p>
+  <p class="intro">Every picture holds a little feeling.</p>
 <div class="memory-grid" id="photoGallery">
-  <div class="memory"><img src="images/photo1.jpg" alt="Memory 1"></div>
-  <div class="memory"><img src="images/photo2.jpg" alt="Memory 2"></div>
-  <div class="memory"><img src="images/photo3.jpg" alt="Memory 3"></div>
-  <div class="memory"><img src="images/photo4.jpg" alt="Memory 4"></div>
-  <div class="memory"><img src="images/photo5.jpg" alt="Memory 5"></div>
-  <div class="memory"><img src="images/photo6.jpg" alt="Memory 6"></div>
-  <div class="memory"><img src="images/photo7.jpg" alt="Memory 7"></div>
-  <div class="memory"><img src="images/photo8.jpg" alt="Memory 8"></div>
+  <div class="memory"><img src="photo1.jpg" alt="Memory 1"></div>
+  <div class="memory"><img src="photo2.jpg" alt="Memory 2"></div>
+  <div class="memory"><img src="photo3.jpg" alt="Memory 3"></div>
+  <div class="memory"><img src="photo4.jpg" alt="Memory 4"></div>
+  <div class="memory"><img src="photo5.jpg" alt="Memory 5"></div>
+  <div class="memory"><img src="photo6.jpg" alt="Memory 6"></div>
+  <div class="memory"><img src="photo7.jpg" alt="Memory 7"></div>
+  <div class="memory"><img src="photo8.jpg" alt="Memory 8"></div>
 </div>
   <div class="section-kicker">Chapter two · from my heart</div><h2>A letter for Jannu</h2>
   <div class="panel letter">Happy Birthday, <strong>Pranty — my Jannu</strong> ♡
@@ -51,7 +51,6 @@ And now, here I am, making a whole little website for the girl who once picked u
 <strong>Happy Birthday, Jannu. I hope your day is filled with the same warmth and happiness that your little act of kindness brought into my memory. Keep smiling, keep dreaming, and always remember how special you are to me. ♡</strong>
 
 <span class="tiny">— From someone who wanted to make your day a little more special</span></div>
-  <p class="tiny">Tip: edit this letter in index.html to add your own true memories, inside jokes, and words.</p>
 </div></section>
 <section id="birthday"><div class="wrap"><div class="panel" style="text-align:center">
   <div class="section-kicker">Chapter three · the big wish</div><div class="cake">🎂</div>
@@ -101,6 +100,7 @@ themeBtn.addEventListener('click',async()=>{
 const audio=document.getElementById('audio'), musicBtn=document.getElementById('musicToggle');
 document.getElementById('musicInput').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;audio.src=URL.createObjectURL(f);musicBtn.disabled=false;musicBtn.textContent='Play music'});
 musicBtn.addEventListener('click',async()=>{if(audio.paused){try{await audio.play();musicBtn.textContent='Pause music'}catch{musicBtn.textContent='Tap to play music'}}else{audio.pause();musicBtn.textContent='Play music'}});
+document.getElementById('wishBtn').addEventListener('click',()=>document.getElementById('secret').classList.add('show'));
 </script>
 </body>
 </html>
